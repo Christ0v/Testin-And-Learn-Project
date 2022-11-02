@@ -1,2 +1,2 @@
-# Testin-And-Learn-Project
+# Testing-And-Learn-Project
 First project
