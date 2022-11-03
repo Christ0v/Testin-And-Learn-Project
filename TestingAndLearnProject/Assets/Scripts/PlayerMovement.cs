@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float MoveSmoothTime;
-    public float GravityStrength;
-    public float JumpStrength;
     public float WalkSpeed;
     public float RunSpeed;
+    public float speed = 6.0F;
+    public float jumpSpeed = 8.0F;
+    public float gravity = 20.0F;
+
+    private Vector3 moveDirection = Vector3.zero;
 
     private CharacterController Controller;
     private Vector3 CurrentMoveVelocity;
@@ -46,21 +49,17 @@ public class PlayerMovement : MonoBehaviour
             MoveSmoothTime
             );
 
-        Controller.Move(CurrentMoveVelocity * Time.deltaTime);
-
-        Ray groundCheckRay = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(groundCheckRay, 1.1f))
+        CharacterController controller = GetComponent<CharacterController>();
+        if (controller.isGrounded)
         {
-            CurrentForceVelocity.y = -2f;
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            if (Input.GetButton("Jump"))
+                moveDirection.y = jumpSpeed;
 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                CurrentForceVelocity.y = JumpStrength;
-            }
-            else
-            {
-                CurrentForceVelocity.y -= GravityStrength * Time.deltaTime;
-            }
         }
+        moveDirection.y -= gravity * Time.deltaTime;
+        controller.Move(moveDirection * Time.deltaTime);
     }
 }
