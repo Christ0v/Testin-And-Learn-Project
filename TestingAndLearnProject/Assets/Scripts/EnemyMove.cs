@@ -29,14 +29,14 @@ public class EnemyMove : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerHitbox"))
         {
             spotted = true;
         }
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerHitbox"))
         {
             StartCoroutine(search());
         }
