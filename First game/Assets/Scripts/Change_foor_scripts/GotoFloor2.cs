@@ -16,7 +16,6 @@ public class GotoFloor2 : MonoBehaviour
     if(other.CompareTag("anyDoors"))
     {
       triggered = true;
-      displayText.text = "Find the key";
     }  
   
     if(other.CompareTag("Key"))
@@ -34,6 +33,11 @@ public class GotoFloor2 : MonoBehaviour
   }      
   void Update()
   {
+    if(Input.GetKeyDown(KeyCode.E) && triggered)
+    {
+      displayText.text = "Find a key";
+    }
+
     if(Input.GetKeyDown(KeyCode.E) && isKey)
     {
     goNext = true;
