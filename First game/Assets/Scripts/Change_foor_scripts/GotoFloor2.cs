@@ -52,4 +52,3 @@ public class GotoFloor2 : MonoBehaviour
   
      
 }
-
