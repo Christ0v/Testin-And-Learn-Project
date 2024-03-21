@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Key
   - anyDoors
+  - redButton
+  - greenButton
   layers:
   - Default
   - TransparentFX
