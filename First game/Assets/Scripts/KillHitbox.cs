@@ -9,7 +9,7 @@ public class KillHitbox : MonoBehaviour
   void OnTriggerEnter(Collider other)
   {
     if(other.CompareTag("Player"))
-    SceneManager.LoadScene("Dead Screen");
+    SceneManager.LoadScene("Floor3");
   }   
      
 }
